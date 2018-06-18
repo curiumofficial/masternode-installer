@@ -3,7 +3,7 @@
     <vue-typed-js :strings="[
         'Doing magic...', 
         'Configuring your Masternode...',
-        'Staying in Motion...',
+        'Staying in GO...',
         'Setting up gears...',
         'Preparing Coffee...',
       ]" 
@@ -81,12 +81,12 @@ export default {
   },
   mounted() {
     axios.post('https://api.digitalocean.com/v2/droplets', {
-      name: `xmn-${this.mnName}`,
+      name: `cru-${this.mnName}`,
       region: 'nyc3',
       size: 's-1vcpu-1gb',
       image: 'ubuntu-16-04-x64',
       ipv6: false,
-      tags: ['xmn', 'masternode'],
+      tags: ['cru', 'masternode'],
       user_data: `#cloud-config
 package_upgrade: true
 
