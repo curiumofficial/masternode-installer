@@ -1,10 +1,10 @@
 <template>
   <div id="first-step">
     <p>Currently you have: <span class="amount">{{balance}}</span>XMN</p>
-    <p class="mt20" v-if="balance >= 1000">We can continue.</p>
-    <p class="mt20" v-if="balance < 1000">We can't continue. You need at least 1000 XMN unlocked on your account.</p>
+    <p class="mt20" v-if="balance >= 10000">We can continue.</p>
+    <p class="mt20" v-if="balance < 10000">We can't continue. You need at least 10000 CRU unlocked on your account.</p>
     <div class="separator"></div>
-    <div v-if="balance >= 1000">
+    <div v-if="balance >= 10000">
       <p>First, we need a good VPS:</p>
       <img src="~@/assets/digitalocean.png" class="do-logo" alt="DigitalOcean" />
       <ul class="buttons">
@@ -15,9 +15,6 @@
           <button @click="openLink($event, 'https://m.do.co/c/7ef716d06656')">Signup</button>
         </li>
       </ul>
-    </div>
-    <div v-if="balance < 1000">
-      <p>You can get more XMN from our <a href="https://motionproject.org/#exchanges" @click="openLink($event, 'https://motionproject.org/#exchanges')" target="_blank">supported exchanges</a>.</p>
     </div>
   </div>
 </template>
@@ -30,11 +27,11 @@ import path from 'path';
 import userPrompt from 'electron-osx-prompt';
 import { setTimeout } from 'timers';
 const { dialog } = require('electron').remote;
-const Client = require('motion-core');
+const Client = require('Curiumn');
 const client = new Client({
-  username: 'motion',
-  password: '47VMxa7GvxKaV3J',
-  port: 3385,
+  username: 'curium',
+  password: 'jkdfs87fs78ddf',
+  port: 18745,
 });
 
 export default {
@@ -124,9 +121,9 @@ export default {
           .then((address) => {
             console.log('New Address Generated', address);
             this.xmnaddress = address;
-            // Send 1000 XMN
+            // Send 10000 CRU
             client
-              .sendToAddress(this.xmnaddress, 1000)
+              .sendToAddress(this.cruaddress, 10000)
               .then((txid) => {
                 console.log('txid', txid);
                 // Restart Install Masternode
@@ -160,13 +157,13 @@ export default {
     },
     getCurrentMasternodes() {
       let datadirPath = `${this.$store.state.Information.mnConfPath}/masternode.conf`;
-      // let datadirPath = `${os.userInfo().homedir}/AppData/Roaming/MotionCore/masternode.conf`;
+      // let datadirPath = `${os.userInfo().homedir}/AppData/Roaming/curiumcru/masternode.conf`;
       // if (os.platform() === 'darwin') {
       //   datadirPath =
-      //  `${os.userInfo().homedir}/Library/Application Support/MotionCore/masternode.conf`;
+      //  `${os.userInfo().homedir}/Library/Application Support/curiumcru/masternode.conf`;
       // }
       // if (os.platform() === 'linux') {
-      //   datadirPath = `${os.userInfo().homedir}/.motioncore/masternode.conf`;
+      //   datadirPath = `${os.userInfo().homedir}/.curiumcru/masternode.conf`;
       // }
 
       if (fs.existsSync(datadirPath)) {
