@@ -1,11 +1,11 @@
 import { app, BrowserWindow, ipcMain, Menu } from 'electron' // eslint-disable-line
 const electronOauth2 = require('electron-oauth2');
 const oauthConfig = require('./config').oauth;
-const Client = require('motion-core');
+const Client = require('Curiumn');
 const client = new Client({
-  username: 'motion',
-  password: '47VMxa7GvxKaV3J',
-  port: 3385,
+  username: 'curium',
+  password: 'jkdfs87fs78ddf',
+  port: 18745,
 });
 
 /**
