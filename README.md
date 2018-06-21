@@ -1,6 +1,6 @@
-# motion-mn-installer
+# curium-mn-installer
 
-> MotionProject Masternode Installer
+> CuriumProject Masternode Installer
 
 #### Build Setup
 

@@ -11,10 +11,10 @@ Vue.config.productionTip = false;
 
 const config = {
   apiKey: 'AIzaSyA7nyVTExF1TZ5qFqE8wN0RTPWdBZNPJz4',
-  authDomain: 'motion-masternode-installer.firebaseapp.com',
-  databaseURL: 'https://motion-masternode-installer.firebaseio.com',
-  projectId: 'motion-masternode-installer',
-  storageBucket: 'motion-masternode-installer.appspot.com',
+  authDomain: 'curium-masternode-installer.firebaseapp.com',
+  databaseURL: 'https://curium-masternode-installer.firebaseio.com',
+  projectId: 'curium-masternode-installer',
+  storageBucket: 'curium-masternode-installer.appspot.com',
   messagingSenderId: '661248216725',
 };
 window.firebase.initializeApp(config);

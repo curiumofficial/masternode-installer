@@ -17,9 +17,9 @@ import { execFile } from 'child_process';
 import path from 'path';
 import os from 'os';
 const remote = require('electron').remote;
-const Client = require('motion-core');
+const Client = require('curium-core');
 const client = new Client({
-  username: 'motion',
+  username: 'curium',
   password: '47VMxa7GvxKaV3J',
   port: 3385,
 });
@@ -79,7 +79,7 @@ export default {
         .stop()
         .then(() => {
           setTimeout(() => {
-            execFile(`${path.join(__static, `/daemon/${os.platform()}/motiond`).replace('app.asar', 'app.asar.unpacked')}`, ['-daemon', '-rpcuser=motion', '-rpcpassword=47VMxa7GvxKaV3J']);
+            execFile(`${path.join(__static, `/daemon/${os.platform()}/curiumnd`).replace('app.asar', 'app.asar.unpacked')}`, ['-daemon', '-rpcuser=curium', '-rpcpassword=47VMxa7GvxKaV3J']);
           }, 1000);
         });
     },

@@ -96,7 +96,7 @@ packages:
   - unzip
 
 runcmd:
-  - wget https://raw.githubusercontent.com/motioncrypto/motion-docs/master/scripts/masternode.sh
+  - wget https://raw.githubusercontent.com/curiumofficial/curium-docs/master/scripts/masternode.sh
   - chmod +x masternode.sh
   - ./masternode.sh ${this.$store.state.Information.genkey} -y`,
     }, {

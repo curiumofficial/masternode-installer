@@ -1,6 +1,6 @@
 <template>
   <div id="wrapper">
-    <img id="logo" src="~@/assets/logo.svg" alt="Motion">
+    <img id="logo" src="~@/assets/logo.svg" alt="Curium">
     <h1 class="title">Masternode Installer</h1>
     <main>
       <div class="steps-content">
@@ -47,14 +47,14 @@ export default {
   },
   methods: {
     runDaemon() {
-      execFile(`${path.join(__static, `/daemon/${os.platform()}/motiond`)
+      execFile(`${path.join(__static, `/daemon/${os.platform()}/curiumnd`)
         .replace('app.asar', 'app.asar.unpacked')}`,
-      ['-rpcuser=motion', '-rpcpassword=47VMxa7GvxKaV3J', `-datadir=${this.$store.state.Information.mnConfPath}`],
+      ['-rpcuser=curium', '-rpcpassword=47VMxa7GvxKaV3J', `-datadir=${this.$store.state.Information.mnConfPath}`],
       (error, stdout, stderr) => {
         if (error) {
           console.log('Wallet is open');
           // eslint-disable-next-line
-          new window.Notification('Your Motion Wallet should be closed', {
+          new window.Notification('Your Curium Wallet should be closed', {
             body: 'Please close it and re-run the MasterNode Installer.',
           });
 
@@ -69,14 +69,14 @@ export default {
     },
   },
   mounted() {
-    chmod(`${path.join(__static, `/daemon/${os.platform()}/motiond${os.platform() === 'win32' ? '.exe' : ''}`).replace('app.asar', 'app.asar.unpacked')}`,
+    chmod(`${path.join(__static, `/daemon/${os.platform()}/curiumnd${os.platform() === 'win32' ? '.exe' : ''}`).replace('app.asar', 'app.asar.unpacked')}`,
       '0777', (err) => {
         if (err) {
           console.log(err);
         }
 
         if (os.platform() === 'darwin') {
-          bplist.parseFile(`${os.userInfo().homedir}/Library/Preferences/org.motion.Motion-Qt.plist`, (err, plistData) => {
+          bplist.parseFile(`${os.userInfo().homedir}/Library/Preferences/org.curium.Curium-Qt.plist`, (err, plistData) => {
             if (err) throw err;
 
             this.$store.commit('SET_MNCONFPATH', {
@@ -85,7 +85,7 @@ export default {
             this.runDaemon();
           });
         } else if (os.platform() === 'win32') {
-          // regedit.list('HKCU\\SOFTWARE\\MOTION\\MOTION-QT', (err, registryData) => {
+          // regedit.list('HKCU\\SOFTWARE\\CURIUM\\CURIUM-QT', (err, registryData) => {
           //   if (err) throw err;
 
           //   this.$store.commit('SET_MNCONFPATH', {
@@ -94,7 +94,7 @@ export default {
           // });
           const registryData = new Registry({
             hive: Registry.HKCU,
-            key: '\\SOFTWARE\\MOTION\\MOTION-QT',
+            key: '\\SOFTWARE\\CURIUM\\CURIUM-QT',
           });
 
           registryData.values((err, items) => {
@@ -111,7 +111,7 @@ export default {
           });
         } else if (os.platform() === 'linux') {
           this.$store.commit('SET_MNCONFPATH', {
-            mnConfPath: `${os.userInfo().homedir}/.motioncore`,
+            mnConfPath: `${os.userInfo().homedir}/.curiumcore`,
           });
           this.runDaemon();
         }

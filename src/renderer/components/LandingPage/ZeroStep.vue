@@ -11,9 +11,9 @@
 import axios from 'axios';
 import { setTimeout } from 'timers';
 const remote = require('electron').remote;
-const Client = require('motion-core');
+const Client = require('curium-core');
 const client = new Client({
-  username: 'motion',
+  username: 'curium',
   password: '47VMxa7GvxKaV3J',
   port: 3385,
 });
@@ -26,7 +26,7 @@ export default {
   },
   methods: {
     getBlockCount() {
-      axios.get('https://explorer.motionproject.org/api/getblockcount')
+      axios.get('https://explorer.curiumproject.org/api/getblockcount')
         .then((response) => {
           this.blockCount = Number(response.data);
         });
@@ -65,7 +65,7 @@ export default {
             console.log(error);
             if (error.code === 401) {
               // eslint-disable-next-line
-              new window.Notification('Your Motion Wallet should be closed', {
+              new window.Notification('Your Curium Wallet should be closed', {
                 body: 'Please close it and re-run the MasterNode Installer.',
               });
 

@@ -170,8 +170,8 @@ export default {
         this.readCurrentMasternodes(datadirPath);
       } else {
         // eslint-disable-next-line
-        new window.Notification('Motion Datadir is not the default one', {
-          body: 'Please select your Motion Datadir manually',
+        new window.Notification('Curium Datadir is not the default one', {
+          body: 'Please select your Curium Datadir manually',
         });
         setTimeout(() => {
           datadirPath = dialog.showOpenDialog({
